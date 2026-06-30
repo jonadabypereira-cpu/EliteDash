@@ -163,8 +163,8 @@ with col2:
     # Centraliza o texto vertical e horizontalmente nesta coluna
     st.markdown("""
         <div style="text-align: center;">
-            <p><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i></p>
-            <h3 style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h3>
+           <h3><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i><h3>
+            <h2> style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h2>
         </div>
     """, unsafe_allow_html=True)
 
