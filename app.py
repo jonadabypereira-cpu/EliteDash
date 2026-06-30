@@ -175,36 +175,6 @@ with col3:
 # =========================
 # BLOCOS DE LIGAÇÃO
 # =========================
-st.markdown("""
-<div style="
-    text-align:center;
-    margin-bottom:0px;
-">
-<div style="
-    color:white;
-    font-size:20px;
-    font-style:italic;
-    margin-top:0px;
-">
-Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."
-</div>
-<div style="
-    color:#00b050;
-    font-size:30px;
-    font-weight:700;
-    margin-top:0px;
-    letter-spacing:8px;
-">
-🚀 RUMO AOS 180 MILHÕES!
-</div>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div style="
-height:28px;
-">
-</div>
 """, unsafe_allow_html=True)
 
 horarios = [
