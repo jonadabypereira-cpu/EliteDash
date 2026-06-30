@@ -162,7 +162,7 @@ with col_logo_esq:
 with col_logo_dir:
     if LOGO_DIREITA_B64:
         st.markdown(
-            f'<img src="{LOGO_DIREITA_B64}" style="max-height:200px; float:right;">',
+            f'<img src="{LOGO_DIREITA_B64}" style="max-height:150px; float:right;">',
             unsafe_allow_html=True
         )
 
