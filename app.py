@@ -186,14 +186,14 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col1:
     if LOGO_ESQUERDA_B64:
         # Adiciona uma classe específica para o logo da esquerda
-        st.markdown(f'<div class="logo-laterais"><img src="{LOGO_ESQUERDA_B64}" width="200"></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="logo-laterais"><img src="{LOGO_ESQUERDA_B64}" width="350"></div>', unsafe_allow_html=True)
 
 with col2:
     # Usa a classe .cabecalho-compacto para alinhar e aproximar os textos
     st.markdown(f"""
         <div class="cabecalho-compacto">
-            <h3 style="font-size: 20px; margin-top: 0; margin-bottom: 0;"><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i></h3>
-            <h1 style="font-size: 50px; color: green; margin-top: 0; margin-bottom: 0;">TIME ELITE</h1>
+            <h3 style="font-size: 30px; margin-top: 0; margin-bottom: 0;"><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i></h3>
+            <h1 style="font-size: 50px; color: orange; margin-top: 0; margin-bottom: 0;">TIME ELITE</h1>
             <h1 style="font-size: 60px; color: green; margin-top: 0;">🚀 RUMO AOS 180 MILHÕES!</h1>
         </div>
     """, unsafe_allow_html=True)
