@@ -1,7 +1,6 @@
-import streamlit as st
+pythonimport streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
-from streamlit_autorefresh import st_autorefresh
 import pytz
 import base64
 
@@ -81,16 +80,13 @@ h3 {
 </style>
 """, unsafe_allow_html=True)
 
-# Atualiza a tela a cada segundo
-st_autorefresh(interval=1000, key="timer")
-
 # =========================
 # CSS VISUAL
 # =========================
 
 st.markdown("""
 <style>
-.timer-box{
+.r-box{
 padding:6px;
 border-radius:15px;
 text-align:center;
