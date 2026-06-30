@@ -152,19 +152,25 @@ if logo_dir_data is None:
 # ==================================
 # CABEÇALHO COM LOGOS
 # ==================================
-col_logo_esq, col_titulo, col_logo_dir = st.columns([1, 4, 1])
-with col_logo_esq:
+# Cria 3 colunas: as laterais para os logos e a central para o texto
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col1:
     if LOGO_ESQUERDA_B64:
-        st.markdown(
-            f'<img src="{LOGO_ESQUERDA_B64}" style="max-height:200px;">',
-            unsafe_allow_html=True
-        )
-with col_logo_dir:
+        st.markdown(f'<img src="{LOGO_ESQUERDA_B64}" width="200">', unsafe_allow_html=True)
+
+with col2:
+    # Centraliza o texto vertical e horizontalmente nesta coluna
+    st.markdown("""
+        <div style="text-align: center;">
+            <p><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i></p>
+            <h3 style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h3>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col3:
     if LOGO_DIREITA_B64:
-        st.markdown(
-            f'<img src="{LOGO_DIREITA_B64}" style="max-height:150px; float:right;">',
-            unsafe_allow_html=True
-        )
+        st.markdown(f'<div style="text-align: right;"><img src="{LOGO_DIREITA_B64}"width="150"></div>', unsafe_allow_html=True)
 
 # =========================
 # BLOCOS DE LIGAÇÃO
