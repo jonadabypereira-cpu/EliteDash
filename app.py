@@ -149,19 +149,6 @@ if logo_esq_data is None:
 if logo_dir_data is None:
     st.warning(f"⚠️ Logo não encontrado: {CAMINHO_LOGO_DIREITA} (verifique se o arquivo está no repositório, na mesma pasta do app.py)")
     
-# AQUI É ONDE VOCÊ AUMENTA O TAMANHO
-# Substitua o valor de "width" (ex: 300px) pelo tamanho desejado.
-if LOGO_ESQUERDA_B64:
-    st.markdown(
-        f'<img src="{LOGO_ESQUERDA_B64}" style="width: 300px;">', 
-        unsafe_allow_html=True
-    )
-
-if LOGO_DIREITA_B64:
-    st.markdown(
-        f'<img src="{LOGO_DIREITA_B64}" style="width: 300px;">', 
-        unsafe_allow_html=True
-    )
 # ==================================
 # CABEÇALHO COM LOGOS
 # ==================================
@@ -169,13 +156,13 @@ col_logo_esq, col_titulo, col_logo_dir = st.columns([1, 4, 1])
 with col_logo_esq:
     if LOGO_ESQUERDA_B64:
         st.markdown(
-            f'<img src="{LOGO_ESQUERDA_B64}" style="max-height:60px;">',
+            f'<img src="{LOGO_ESQUERDA_B64}" style="max-height:200px;">',
             unsafe_allow_html=True
         )
 with col_logo_dir:
     if LOGO_DIREITA_B64:
         st.markdown(
-            f'<img src="{LOGO_DIREITA_B64}" style="max-height:60px; float:right;">',
+            f'<img src="{LOGO_DIREITA_B64}" style="max-height:200px; float:right;">',
             unsafe_allow_html=True
         )
 
