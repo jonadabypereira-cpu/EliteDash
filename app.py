@@ -133,9 +133,9 @@ def get_base64(caminho):
     with open(caminho, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-# Ajuste os nomes dos arquivos aqui caso estejam diferentes no seu repositório
-CAMINHO_LOGO_ESQUERDA = "logo_esquerda.png"
-CAMINHO_LOGO_DIREITA = "logo_direita.png"
+# Nomes exatamente como estão no repositório GitHub
+CAMINHO_LOGO_ESQUERDA = "logo_esquerda.png.png"
+CAMINHO_LOGO_DIREITA = "logo_direita.png.png"
 
 logo_esq_data = get_base64(CAMINHO_LOGO_ESQUERDA)
 logo_dir_data = get_base64(CAMINHO_LOGO_DIREITA)
@@ -299,16 +299,28 @@ if not bloco_encontrado:
         """, unsafe_allow_html=True)
 
 # ==================================
-# LEITURA DOS DADOS - com proteção contra arquivo ausente
+# LEITURA DOS DADOS (GOOGLE SHEETS)
 # ==================================
+# Planilha pública: aba "faturamento" já contém vendedor, meta, faturado e clientes_novos
+GOOGLE_SHEET_ID = "1XNRWoGYXCZG73L_0Tq2LOQJslXm3M4d3"
+GOOGLE_SHEET_GID = "0"  # gid da aba "faturamento"
+GOOGLE_SHEET_URL = (
+    f"https://docs.google.com/spreadsheets/d/{GOOGLE_SHEET_ID}"
+    f"/export?format=csv&gid={GOOGLE_SHEET_GID}"
+)
+
 try:
-    faturamento = pd.read_excel("faturamento.xlsx")
-    clientes = pd.read_excel("clientes_novos.xlsx")
-except FileNotFoundError as e:
+    dados = pd.read_csv(GOOGLE_SHEET_URL)
+    dados.columns = dados.columns.str.strip()
+    dados = dados.dropna(subset=["vendedor"])
+    faturamento = dados[["vendedor", "meta", "faturado"]]
+    clientes = dados[["vendedor", "clientes_novos"]]
+except Exception as e:
     st.error(
-        f"❌ Não foi possível carregar os dados: {e}. "
-        "Verifique se os arquivos 'faturamento.xlsx' e 'clientes_novos.xlsx' "
-        "estão no repositório, na mesma pasta do app.py."
+        f"❌ Não foi possível carregar os dados da planilha do Google Sheets: {e}. "
+        "Verifique se a planilha está compartilhada como 'Qualquer pessoa com o link "
+        "pode visualizar' e se a aba 'faturamento' contém as colunas vendedor, meta, "
+        "faturado e clientes_novos."
     )
     st.stop()
 
