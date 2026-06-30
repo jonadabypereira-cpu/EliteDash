@@ -148,7 +148,20 @@ if logo_esq_data is None:
     st.warning(f"⚠️ Logo não encontrado: {CAMINHO_LOGO_ESQUERDA} (verifique se o arquivo está no repositório, na mesma pasta do app.py)")
 if logo_dir_data is None:
     st.warning(f"⚠️ Logo não encontrado: {CAMINHO_LOGO_DIREITA} (verifique se o arquivo está no repositório, na mesma pasta do app.py)")
+    
+# AQUI É ONDE VOCÊ AUMENTA O TAMANHO
+# Substitua o valor de "width" (ex: 300px) pelo tamanho desejado.
+if LOGO_ESQUERDA_B64:
+    st.markdown(
+        f'<img src="{LOGO_ESQUERDA_B64}" style="width: 300px;">', 
+        unsafe_allow_html=True
+    )
 
+if LOGO_DIREITA_B64:
+    st.markdown(
+        f'<img src="{LOGO_DIREITA_B64}" style="width: 300px;">', 
+        unsafe_allow_html=True
+    )
 # ==================================
 # CABEÇALHO COM LOGOS
 # ==================================
