@@ -186,7 +186,7 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col1:
     if LOGO_ESQUERDA_B64:
         # Adiciona uma classe específica para o logo da esquerda
-        st.markdown(f'<div class="logo-laterais"><img src="{LOGO_ESQUERDA_B64}" width="350"></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="logo-laterais"><img src="{LOGO_ESQUERDA_B64}" width="350" style="border-radius: 15px;"></div>', unsafe_allow_html=True)
 
 with col2:
     # Usa a classe .cabecalho-compacto para alinhar e aproximar os textos
