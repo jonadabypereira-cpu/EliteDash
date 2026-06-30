@@ -157,14 +157,15 @@ col1, col2, col3 = st.columns([1, 2, 1])
 
 with col1:
     if LOGO_ESQUERDA_B64:
-        st.markdown(f'<img src="{LOGO_ESQUERDA_B64}" width="300">', unsafe_allow_html=True)
+        st.markdown(f'<img src="{LOGO_ESQUERDA_B64}" width="350">', unsafe_allow_html=True)
 
 with col2:
     # Centraliza o texto vertical e horizontalmente nesta coluna
     st.markdown("""
         <div style="text-align: center;">
-           <h3><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i><h3>
-            <h1 style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h1>
+           <h3 style="font-size: 20px;><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i><h3>
+           <h1 style="font-size: 25px;; style="color: green;">TIME ELITE</h1>
+            <h1 style="font-size: 25px; style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h1>
         </div>
     """, unsafe_allow_html=True)
 
