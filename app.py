@@ -164,7 +164,7 @@ with col2:
     st.markdown("""
         <div style="text-align: center;">
            <h3><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i><h3>
-            <h2 style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h2>
+            <h1 style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h1>
         </div>
     """, unsafe_allow_html=True)
 
