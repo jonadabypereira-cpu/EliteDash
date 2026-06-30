@@ -153,6 +153,20 @@ if logo_dir_data is None:
 # CABEÇALHO COM LOGOS
 # ==================================
 # Cria 3 colunas: as laterais para os logos e a central para o texto
+st.markdown("""
+    <style>
+        #cabecalho-compacto {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .texto-alinhado {
+            text-align: center;
+            margin-top: -20px; /* PUXA O TEXTO PARA CIMA, ALINHANDO COM OS LOGOS */
+            width: 100%;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 col1, col2, col3 = st.columns([1, 2, 1])
 
 with col1:
