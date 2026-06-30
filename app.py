@@ -131,8 +131,8 @@ agora = datetime.now(tz)
 col_logo_esq, col_titulo, col_logo_dir = st.columns([1, 4, 1])
 
 with col_logo_esq:
-    # Insere a logo da esquerda (Godi Transportes)
-    st.image("logo_esquerda.png.png", use_container_width=True)
+    # Nome ajustado para bater com o seu GitHub (logo_escherda.png.png)
+    st.image("logo_escherda.png.png", use_container_width=True)
 
 with col_titulo:
     st.markdown("""
@@ -147,8 +147,8 @@ with col_titulo:
     """, unsafe_allow_html=True)
 
 with col_logo_dir:
-    # Insere a logo da direita (Team Elite)
-    st.image("logo_direita.png.jpg", use_container_width=True)
+    # Nome ajustado para bater com o seu GitHub (logo_derivar.png.png)
+    st.image("logo_derivar.png.png", use_container_width=True)
 
 
 st.markdown("""
@@ -180,7 +180,6 @@ for horario in horarios:
     fim = inicio + timedelta(minutes=60)
     aviso = inicio - timedelta(minutes=5)
 
-    # BLOCO EM ANDAMENTO
     if inicio <= agora < fim:
         restante = fim - agora
         minutos = int(restante.total_seconds() // 60)
@@ -200,7 +199,6 @@ for horario in horarios:
         bloco_encontrado = True
         break
 
-    # FALTAM MENOS DE 5 MINUTOS
     elif aviso <= agora < inicio:
         restante = inicio - agora
         minutos = int(restante.total_seconds() // 60)
@@ -220,7 +218,6 @@ for horario in horarios:
         bloco_encontrado = True
         break
 
-# FORA DOS BLOCOS
 if not bloco_encontrado:
     proximo = None
     for horario in horarios:
@@ -263,21 +260,19 @@ if not bloco_encontrado:
         """, unsafe_allow_html=True)
 
 # ==================================
-# LEITURA DOS DADOS (GOOGLE SHEETS)
+# LEITURA DOS DADOS (LINK ATUALIZADO)
 # ==================================
 
-# URL de exportação gerada a partir do link enviado
 google_sheet_url = "https://docs.google.com/spreadsheets/d/1XNRWoGYXCZG73L_0Tq2LOQJslXm3M4d3/export?format=xlsx"
 
-# Lendo as abas da planilha online (Certifique-se de que a planilha está configurada como "Qualquer pessoa com o link pode ler")
 faturamento = pd.read_excel(
     google_sheet_url,
-    sheet_name="faturamento"  # Caso o nome da aba seja diferente na planilha, mude aqui (ex: sheet_name=0 para a primeira aba)
+    sheet_name="faturamento"
 )
 
 clientes = pd.read_excel(
     google_sheet_url,
-    sheet_name="clientes_novos"  # Caso o nome da aba seja diferente na planilha, mude aqui (ex: sheet_name=1 para a segunda aba)
+    sheet_name="clientes_novos"
 )
 
 # ==================================
@@ -294,7 +289,7 @@ clientes_novos = clientes["clientes_novos"].sum()
 # ==================================
 
 dias_uteis_mes = 21
-dias_uteis_passados = 19  # ajuste diariamente
+dias_uteis_passados = 19  
 percentual_esperado = (dias_uteis_passados / dias_uteis_mes) * 100
 
 # ==================================
@@ -311,30 +306,11 @@ st.markdown("""
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
-col1.metric(
-    "Meta Geral",
-    f"R$ {meta_geral:,.0f}"
-)
-
-col2.metric(
-    "Faturado",
-    f"R$ {faturado_geral:,.0f}"
-)
-
-col3.metric(
-    "% Atingido",
-    f"{percentual:.1f}%"
-)
-
-col4.metric(
-    "Clientes Novos",
-    int(clientes_novos)
-)
-
-col5.metric(
-    "% Esperado",
-    f"{percentual_esperado:.1f}%"
-)
+col1.metric("Meta Geral", f"R$ {meta_geral:,.0f}")
+col2.metric("Faturado", f"R$ {faturado_geral:,.0f}")
+col3.metric("% Atingido", f"{percentual:.1f}%")
+col4.metric("Clientes Novos", int(clientes_novos))
+col5.metric("% Esperado", f"{percentual_esperado:.1f}%")
 
 st.markdown("<hr style='margin:1px;'>", unsafe_allow_html=True)
 
@@ -342,17 +318,8 @@ st.markdown("<hr style='margin:1px;'>", unsafe_allow_html=True)
 # PERFORMANCE INDIVIDUAL
 # ==================================
 
-ranking = faturamento.sort_values(
-    by="faturado",
-    ascending=False
-)
-
-resultado = pd.merge(
-    ranking,
-    clientes,
-    on="vendedor",
-    how="left"
-)
+ranking = faturamento.sort_values(by="faturado", ascending=False)
+resultado = pd.merge(ranking, clientes, on="vendedor", how="left")
 
 st.subheader("👤 Performance Individual")
 
@@ -392,132 +359,30 @@ for i in range(0, len(resultado), cards_por_linha):
                     border:0px solid rgba(55,55,55,0.02);
                     box-shadow:0 0px 0px rgba(0,0,0,0.15);
                     ">
-
-                    <div style="
-                    color:white;
-                    font-size:22px;
-                    font-weight:900;
-                    text-align:center;
-                    width:100%;
-                    margin:0 auto 8px auto;
-                    display:block;
-                    ">
+                    <div style="color:white; font-size:22px; font-weight:900; text-align:center; width:100%; margin:0 auto 8px auto; display:block;">
                     {"🏆 " + vendedor['vendedor'] if i + j == 0 else vendedor['vendedor']}
                     </div>
-
-                    <div style="margin-top:5px;">
-                    META
-                    </div>
-
-                    <div style="
-                    color:white;
-                    font-size:20px;
-                    font-weight:bold;
-                    ">
-                    R$ {meta:,.0f}
-                    </div>
-
-                    <div style="margin-top:5px;">
-                    FATURADO
-                    </div>
-
-                    <div style="
-                    color:white;
-                    font-size:20px;
-                    font-weight:bold;
-                    ">
-                    R$ {faturado:,.0f}
-                    </div>
-
-                    <div style="margin-top:5px;">
-                    CLIENTES NOVOS
-                    </div>
-
-                    <div style="
-                    color:white;
-                    font-size:20px;
-                    font-weight:bold;
-                    ">
-                    {clientes_novos_vendedor}
-                    </div>
-
-                    <div style="
-                    margin-top:5px;
-                    color:white;
-                    font-size:16px;
-                    font-weight:600;
-                    ">
-                    {percentual_meta*100:.1f}% da meta
-                    </div>
-
+                    <div style="margin-top:5px;">META</div>
+                    <div style="color:white; font-size:20px; font-weight:bold;">R$ {meta:,.0f}</div>
+                    <div style="margin-top:5px;">FATURADO</div>
+                    <div style="color:white; font-size:20px; font-weight:bold;">R$ {faturado:,.0f}</div>
+                    <div style="margin-top:5px;">CLIENTES NOVOS</div>
+                    <div style="color:white; font-size:20px; font-weight:bold;">{clientes_novos_vendedor}</div>
+                    <div style="margin-top:5px; color:white; font-size:16px; font-weight:600;">{percentual_meta*100:.1f}% da meta</div>
                     </div>
                     """,
                     unsafe_allow_html=True
                 )
-st.markdown("""
-<div style="height:30px;"></div>
-""", unsafe_allow_html=True)
 
+st.markdown("""<div style="height:30px;"></div>""", unsafe_allow_html=True)
 st.subheader("🎯 Faixas de Performance")
 
 col1, col2, col3, col4 = st.columns(4)
-
 with col1:
-    st.markdown("""
-    <div style="
-        background:#2e871e;
-        color:white;
-        padding:2px;
-        border-radius:10px;
-        text-align:center;
-        font-size:14px;
-        font-weight:bold;">
-        🟢 VERDE<br>
-        Meta Batida
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown('<div style="background:#2e871e; color:white; padding:2px; border-radius:10px; text-align:center; font-size:14px; font-weight:bold;">🟢 VERDE<br>Meta Batida</div>', unsafe_allow_html=True)
 with col2:
-    st.markdown("""
-    <div style="
-        background:#2299f7;
-        color:white;
-        padding:2px;
-        border-radius:10px;
-        text-align:center;
-        font-size:14px;
-        font-weight:bold;">
-        🔵 AZUL<br>
-        Acima de 85% da meta
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown('<div style="background:#2299f7; color:white; padding:2px; border-radius:10px; text-align:center; font-size:14px; font-weight:bold;">🔵 AZUL<br>Acima de 85% da meta</div>', unsafe_allow_html=True)
 with col3:
-    st.markdown("""
-    <div style="
-        background:#D4AF37;
-        color:white;
-        padding:2px;
-        border-radius:10px;
-        text-align:center;
-        font-size:14px;
-        font-weight:bold;">
-        🟡 DOURADO<br>
-        Acima do percentual esperado
-    </div>
-    """, unsafe_allow_html=True)
-
+    st.markdown('<div style="background:#D4AF37; color:white; padding:2px; border-radius:10px; text-align:center; font-size:14px; font-weight:bold;">🟡 DOURADO<br>Acima do percentual esperado</div>', unsafe_allow_html=True)
 with col4:
-    st.markdown("""
-    <div style="
-        background:#b62828;
-        color:white;
-        padding:2px;
-        border-radius:10px;
-        text-align:center;
-        font-size:14px;
-        font-weight:bold;">
-        🔴 VERMELHO<br>
-        Abaixo do percentual esperado
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown('<div style="background:#b62828; color:white; padding:2px; border-radius:10px; text-align:center; font-size:14px; font-weight:bold;">🔴 VERMELHO<br>Abaixo do percentual esperado</div>', unsafe_allow_html=True)
