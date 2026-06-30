@@ -167,8 +167,8 @@ st.markdown("""
             margin: 0 !important;
         }
         /* Força o tamanho da fonte em todos os níveis */
-        .texto-central-custom h1 { font-size: 50px !important; line-height: 1.1 !important; margin: 5px 0 !important; }
-        .texto-central-custom h3 { font-size: 25px !important; margin: 5px 0 !important; }
+        .texto-central-custom h1 { font-size: 50px !important; line-height: 1.1 !important; margin: 2px 0 !important; }
+        .texto-central-custom h3 { font-size: 25px !important; margin: 2px 0 !important; }
     </style>
 """, unsafe_allow_html=True)
 
