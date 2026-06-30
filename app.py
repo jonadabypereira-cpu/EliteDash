@@ -182,8 +182,10 @@ with col2:
     st.markdown("""
         <div class="texto-central-custom">
             <h3><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i></h3>
-            <h1 style="color: orange;">TIME ELITE</h1>
-            <h1 style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h1>
+            <h1>
+                <span style="color: orange;">TIME ELITE</span> 
+                <span style="color: green; margin-left: 20px;">🚀 RUMO AOS 180 MILHÕES!</span>
+            </h1>
         </div>
     """, unsafe_allow_html=True)
 
