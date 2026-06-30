@@ -153,56 +153,43 @@ if logo_dir_data is None:
 # CABEÇALHO COM LOGOS
 # ==================================
 # Cria 3 colunas: as laterais para os logos e a central para o texto
+# --- INÍCIO DO CABEÇALHO AJUSTADO ---
 st.markdown("""
     <style>
-        /* Remove o padding padrão do Streamlit no contêiner principal */
-        div[data-testid="stVerticalBlock"] > div:first-child {
-            padding-top: 0px !important;
-            padding-bottom: 0px !important;
-        }
-        
-        /* Define uma classe para o texto central com alinhamento vertical */
-        .cabecalho-compacto {
+        .texto-central-custom {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centraliza verticalmente */
-            align-items: center;    /* Centraliza horizontalmente */
-            height: 100%;           /* Ocupa toda a altura da coluna */
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-top: -15px;      /* Puxa o bloco de texto para cima */
+            width: 100%;
+            padding: 0 !important;
+            margin: 0 !important;
         }
-        
-        /* Remove margens extras dos logos */
-        .logo-laterais img {
-            margin-top: 0px !important;
-            margin-bottom: 0px !important;
-        }
+        /* Força o tamanho da fonte em todos os níveis */
+        .texto-central-custom h1 { font-size: 70px !important; line-height: 1.1 !important; margin: 5px 0 !important; }
+        .texto-central-custom h3 { font-size: 25px !important; margin: 5px 0 !important; }
     </style>
 """, unsafe_allow_html=True)
 
-# Cria 3 colunas, com a central sendo maior, e atribui uma classe para os logos laterais
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2, col3 = st.columns([1, 3, 1]) # Aumentei a proporção da coluna central para 3
 
 with col1:
     if LOGO_ESQUERDA_B64:
-        # Adiciona uma classe específica para o logo da esquerda
-        st.markdown(f'<div class="logo-laterais"><img src="{LOGO_ESQUERDA_B64}" width="350" style="border-radius: 18px;"></div>', unsafe_allow_html=True)
+        st.markdown(f'<img src="{LOGO_ESQUERDA_B64}" width="300" style="border-radius: 15px;">', unsafe_allow_html=True)
 
 with col2:
-    # Usa a classe .cabecalho-compacto para alinhar e aproximar os textos
-    st.markdown(f"""
-        <div class="cabecalho-compacto">
-            <h3 style="font-size: 40px; margin-top: 0; margin-bottom: 0;"><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i></h3>
-            <h1 style="font-size: 120px; color: orange; margin-top: 0; margin-bottom: 0;">TIME ELITE</h1>
-            <h1 style="font-size: 120px; color: green; margin-top: 0;">🚀 RUMO AOS 180 MILHÕES!</h1>
+    st.markdown("""
+        <div class="texto-central-custom">
+            <h3><i>Provérbios 16:3 "Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</i></h3>
+            <h1 style="color: orange;">TIME ELITE</h1>
+            <h1 style="color: green;">🚀 RUMO AOS 180 MILHÕES!</h1>
         </div>
     """, unsafe_allow_html=True)
 
 with col3:
     if LOGO_DIREITA_B64:
-        # Adiciona uma classe específica e o alinhamento à direita para o logo da direita
-        st.markdown(f'<div class="logo-laterais" style="text-align: right;"><img src="{LOGO_DIREITA_B64}" width="200"></div>', unsafe_allow_html=True)
-
+        st.markdown(f'<div style="text-align: right;"><img src="{LOGO_DIREITA_B64}" width="200"></div>', unsafe_allow_html=True)
 # --- FIM DO CABEÇALHO COMPACTO ---
 
 # =========================
