@@ -157,7 +157,7 @@ col1, col2, col3 = st.columns([1, 2, 1])
 
 with col1:
     if LOGO_ESQUERDA_B64:
-        st.markdown(f'<img src="{LOGO_ESQUERDA_B64}" width="200">', unsafe_allow_html=True)
+        st.markdown(f'<img src="{LOGO_ESQUERDA_B64}" width="300">', unsafe_allow_html=True)
 
 with col2:
     # Centraliza o texto vertical e horizontalmente nesta coluna
@@ -170,7 +170,7 @@ with col2:
 
 with col3:
     if LOGO_DIREITA_B64:
-        st.markdown(f'<div style="text-align: right;"><img src="{LOGO_DIREITA_B64}"width="150"></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: right;"><img src="{LOGO_DIREITA_B64}"width="180"></div>', unsafe_allow_html=True)
 
 # =========================
 # BLOCOS DE LIGAÇÃO
