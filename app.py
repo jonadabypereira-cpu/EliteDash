@@ -276,7 +276,7 @@ if not bloco_encontrado:
 # LEITURA DOS DADOS (GOOGLE SHEETS)
 # ==================================
 # Planilha pública: aba "faturamento" já contém vendedor, meta, faturado e clientes_novos
-GOOGLE_SHEET_ID = "1XNRWoGYXCZG73L_0Tq2LOQJslXm3M4d3"
+GOOGLE_SHEET_ID = "1LL944e77bpkpbDKyOy8-M_N7VKHtlvBTP5UtqAKfxBI"
 GOOGLE_SHEET_GID = "0"  # gid da aba "faturamento"
 GOOGLE_SHEET_URL = (
     f"https://docs.google.com/spreadsheets/d/{GOOGLE_SHEET_ID}"
