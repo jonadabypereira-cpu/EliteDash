@@ -5,7 +5,22 @@ from streamlit_autorefresh import st_autorefresh
 import pytz
 import base64
 import os
+import calendar
 
+def dias_uteis_no_mes(ano, mes):
+    """Total de dias úteis (seg-sex) no mês"""
+    total_dias = calendar.monthrange(ano, mes)[1]
+    return sum(
+        1 for dia in range(1, total_dias + 1)
+        if datetime(ano, mes, dia).weekday() < 5
+    )
+
+def dias_uteis_passados_no_mes(ano, mes, dia_atual):
+    """Dias úteis já passados no mês, até o dia atual (inclusive)"""
+    return sum(
+        1 for dia in range(1, dia_atual + 1)
+        if datetime(ano, mes, dia).weekday() < 5
+    )
 # =========================
 # CONFIGURAÇÃO
 # =========================
@@ -331,8 +346,8 @@ clientes_novos = clientes["clientes_novos"].sum()
 # ==================================
 # META ESPERADA NO MÊS
 # ==================================
-dias_uteis_mes = 21
-dias_uteis_passados = 19  # ajuste diariamente
+dias_uteis_mes = dias_uteis_no_mes(agora.year, agora.month)
+dias_uteis_passados = dias_uteis_passados_no_mes(agora.year, agora.month, agora.day)
 percentual_esperado = (dias_uteis_passados / dias_uteis_mes) * 100
 
 # ==================================
@@ -365,8 +380,8 @@ resultado = pd.merge(ranking, clientes, on="vendedor", how="left")
 
 st.subheader("👤 Performance Individual")
 
-dias_uteis_mes = 21
-dias_uteis_passados = 19
+dias_uteis_mes = dias_uteis_no_mes(agora.year, agora.month)
+dias_uteis_passados = dias_uteis_passados_no_mes(agora.year, agora.month, agora.day)
 cards_por_linha = 7
 
 for i in range(0, len(resultado), cards_por_linha):
