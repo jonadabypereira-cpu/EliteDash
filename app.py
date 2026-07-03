@@ -347,7 +347,7 @@ clientes_novos = clientes["clientes_novos"].sum()
 # META ESPERADA NO MÊS
 # ==================================
 dias_uteis_mes = dias_uteis_no_mes(agora.year, agora.month)
-dias_uteis_passados = dias_uteis_passados_no_mes(agora.year, agora.month, agora.day)
+dias_uteis_passados = dias_uteis_passados_no_mes(agora.year, agora.month, agora.day - 1)
 percentual_esperado = (dias_uteis_passados / dias_uteis_mes) * 100
 
 # ==================================
@@ -381,7 +381,7 @@ resultado = pd.merge(ranking, clientes, on="vendedor", how="left")
 st.subheader("👤 Performance Individual")
 
 dias_uteis_mes = dias_uteis_no_mes(agora.year, agora.month)
-dias_uteis_passados = dias_uteis_passados_no_mes(agora.year, agora.month, agora.day)
+dias_uteis_passados = dias_uteis_passados_no_mes(agora.year, agora.month, agora.day - 1)
 cards_por_linha = 7
 
 for i in range(0, len(resultado), cards_por_linha):
